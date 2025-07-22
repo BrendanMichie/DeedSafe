@@ -1,39 +1,38 @@
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9fafb;
-  color: #111827;
+  background: #f4f4f4;
 }
-
 header {
-  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  background: linear-gradient(to right, #2563eb, #1e3a8a);
   color: white;
   padding: 4rem 2rem;
   text-align: center;
 }
-
 section {
   padding: 2rem;
   max-width: 900px;
   margin: auto;
 }
-
-.features, .fica {
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
 }
-
 .card {
   background: white;
-  padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  cursor: pointer;
 }
-
-.card h3 {
-  margin-top: 0;
-  color: #1e40af;
+.card:hover {
+  background: #eff6ff;
+}
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 2rem 0;
 }

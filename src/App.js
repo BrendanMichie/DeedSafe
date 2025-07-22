@@ -1,56 +1,39 @@
+import React, { useState } from "react";
+import FeatureModal from "./components/FeatureModal";
 
-import React from "react";
+const features = [
+  { title: "Title Deed Audit", desc: "Check your title for interdicts or delays.", id: "deed" },
+  { title: "Rates Clearance Audit", desc: "Verify your municipal account is ready.", id: "rates" },
+  { title: "OTP Legal Review", desc: "Have our attorneys review your offer.", id: "otp" },
+  { title: "FICA Vault", desc: "Upload your FICA once and share it easily.", id: "fica" },
+  { title: "Avoid Bank Penalties", desc: "Upload bond info so we can notify your bank.", id: "bank" },
+];
 
 function App() {
+  const [active, setActive] = useState(null);
+
   return (
     <>
       <header>
         <h1>Get Your Property Sale-Ready</h1>
-        <p>Before you sign a sale agreement, make sure everything's in order.</p>
-        <p>We offer 3 free legal audits for property sellers.</p>
+        <p>Start with our free legal audits before you even sign an offer.</p>
       </header>
 
       <section>
-        <h2>✅ What You Get – For Free</h2>
-        <div className="features">
-          <div className="card">
-            <h3>Title Deed Audit</h3>
-            <p>We check your title for interdicts, exclusive use errors, or bond issues that could delay transfer.</p>
-          </div>
-          <div className="card">
-            <h3>Rates Clearance Audit</h3>
-            <p>We ensure your municipal account is up to date and won’t delay your sale.</p>
-          </div>
-          <div className="card">
-            <h3>OTP Legal Review</h3>
-            <p>Upload your offer and we’ll review it before you sign – for free.</p>
-          </div>
+        <h2>🔎 Free Seller Services</h2>
+        <div className="card-grid">
+          {features.map(f => (
+            <div key={f.id} className="card" onClick={() => setActive(f.id)}>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section>
-        <h2>🔒 FICA Vault</h2>
-        <p>You’ll be asked for FICA documents multiple times by banks, agents, bond originators and attorneys. Upload them once into your Deed Safe vault and just send a link every time you’re asked.</p>
-        <div className="fica">
-          <div className="card">
-            <h3>Secure Upload</h3>
-            <p>Upload your ID and proof of address once. We store it securely for you.</p>
-          </div>
-          <div className="card">
-            <h3>One Link, Multiple Uses</h3>
-            <p>Send the link to your FICA to whoever asks – no more repeating yourself.</p>
-          </div>
-        </div>
-      </section>
+      {active && <FeatureModal featureId={active} onClose={() => setActive(null)} />}
 
-      <section>
-        <h2>📦 Deed Safe is for Sellers</h2>
-        <p>Whether you're just thinking of selling or already have a buyer – we help you get ahead of the process and avoid surprises.</p>
-      </section>
-
-      <footer style={{ textAlign: 'center', padding: '2rem 1rem', fontSize: '0.875rem', color: '#6b7280' }}>
-        &copy; {new Date().getFullYear()} Deed Safe. Built with ❤️ by Hammond Pole Attorneys.
-      </footer>
+      <footer>© {new Date().getFullYear()} Deed Safe. A Hammond Pole Attorneys project.</footer>
     </>
   );
 }
